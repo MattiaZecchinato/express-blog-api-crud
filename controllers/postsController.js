@@ -1,4 +1,4 @@
-const posts = require('../posts.js');
+const posts = require('../data/posts.js');
 
 function index(req, res) {
 
@@ -8,7 +8,8 @@ function index(req, res) {
 
 function show(req, res) {
 
-    res.send('show test');
+    const id = req.params.id;
+    res.send(`show test id ${id}`);
     console.log('show test');
 }
 
@@ -20,19 +21,22 @@ function store(req, res) {
 
 function update(req, res) {
 
-    res.send('update test');
+    const id = req.params.id;
+    res.send(`update test id ${id}`);
     console.log('update test');
 }
 
 function modify(req, res) {
 
-    res.send('modify test');
+    const id = req.params.id;
+    res.send(`modify test id ${id}`);
     console.log('modify test');
 }
 
 function destroy(req, res) {
 
-    res.send('destroy test');
+    const id = req.params.id;
+    res.send(`destroy test id ${id}`);
     console.log('destroy test');
 }
 
