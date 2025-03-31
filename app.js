@@ -7,6 +7,9 @@ const app = express();
 // port number
 const port = 3000;
 
+// body-parser for "application/json" 
+app.use(express.json());
+
 // routers
 const routers = require('./routers/postsRouter.js');
 
