@@ -105,6 +105,21 @@ function update(req, res) {
 
     const findId = posts.findIndex(elem => parseInt(elem.id) === id);
 
+    // error catch
+    if (findId === -1) {
+
+        // return response status code
+        res.status(404);
+
+        // return a response with json format
+        return res.json({
+
+            status: 404,
+            error: "Not Found",
+            message: "Post not found"
+        });
+    }
+
     console.log('Body request');
     console.log(req.body);
 
@@ -119,7 +134,7 @@ function update(req, res) {
 
     posts.splice(findId, 1, updatePost);
 
-    res.sendStatus(204);
+    res.json(posts[findId]);
 
     console.log('update test');
 }
