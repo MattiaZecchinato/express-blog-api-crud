@@ -1,3 +1,4 @@
+// require express module
 const express = require('express');
 const router = express.Router();
 
@@ -22,4 +23,5 @@ router.patch('/:id', controllers.modify);
 // delete
 router.delete('/:id', controllers.destroy);
 
+// export all routers
 module.exports = router;
