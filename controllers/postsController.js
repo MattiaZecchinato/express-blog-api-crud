@@ -61,7 +61,7 @@ function store(req, res) {
 
     console.log(req.body);
 
-    // error 404 if req.body is empty
+    // error catch if req.body is empty 
     if (Object.keys(req.body).length === 0) {
 
         // return response status code
@@ -76,13 +76,18 @@ function store(req, res) {
         });
     }
 
+    const newPostId = posts[posts.length - 1].id + 1;
+
     const newPost = {
 
+        "id": newPostId,
         "title": req.body.title,
         "content": req.body.content,
         "image": req.body.image,
         "tags": req.body.tags
     }
+
+    console.log(newPost);
 
     posts.push(newPost);
 
@@ -97,7 +102,25 @@ function update(req, res) {
 
     // catch the parameter of the request
     const id = parseInt(req.params.id);
-    res.send(`update test id ${id}`);
+
+    const findId = posts.findIndex(elem => parseInt(elem.id) === id);
+
+    console.log('Body request');
+    console.log(req.body);
+
+    const updatePost = {
+
+        id,
+        "title": req.body.title,
+        "content": req.body.content,
+        "image": req.body.image,
+        "tags": req.body.tags
+    }
+
+    posts.splice(findId, 1, updatePost);
+
+    res.sendStatus(204);
+
     console.log('update test');
 }
 
