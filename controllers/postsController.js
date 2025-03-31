@@ -60,7 +60,35 @@ function show(req, res) {
 function store(req, res) {
 
     console.log(req.body);
-    res.send('store test');
+
+    // error 404 if req.body is empty
+    if (Object.keys(req.body).length === 0) {
+
+        // return response status code
+        res.status(404);
+
+        // return a response with json format
+        return res.json({
+
+            status: 404,
+            error: "Not Found",
+            message: "Post not found"
+        });
+    }
+
+    const newPost = {
+
+        "title": req.body.title,
+        "content": req.body.content,
+        "image": req.body.image,
+        "tags": req.body.tags
+    }
+
+    posts.push(newPost);
+
+    // return response status code
+    res.sendStatus(204);
+
     console.log('store test');
 }
 
