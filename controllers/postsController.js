@@ -38,11 +38,8 @@ function show(req, res) {
     // error catch
     if (!currentPost) {
 
-        // return response status code
-        res.status(404);
-
         // return a response with json format
-        return res.json({
+        return res.status(404).json({
 
             status: 404,
             error: "Not Found",
@@ -64,11 +61,8 @@ function store(req, res) {
     // error catch if req.body is empty 
     if (Object.keys(req.body).length === 0) {
 
-        // return response status code
-        res.status(404);
-
         // return a response with json format
-        return res.json({
+        return res.status(404).json({
 
             status: 404,
             error: "Not Found",
@@ -108,11 +102,8 @@ function update(req, res) {
     // error catch
     if (findId === -1) {
 
-        // return response status code
-        res.status(404);
-
         // return a response with json format
-        return res.json({
+        return res.status(404).json({
 
             status: 404,
             error: "Not Found",
@@ -158,11 +149,8 @@ function destroy(req, res) {
 
     if (currentPost === -1) {
 
-        // return response status code
-        res.status(404);
-
         // return a response with json format
-        return res.json({
+        return res.status(404).json({
 
             status: 404,
             error: "Not Found",
