@@ -13,6 +13,12 @@ app.use(express.json());
 // routers
 const routers = require('./routers/postsRouter.js');
 
+// error handler
+const errorsHandler = require('./middlewares/errorHandler.js');
+
+// not found
+const notFound = require('./middlewares/notFound.js');
+
 // standard route
 app.get('/', (req, res) => {
 
@@ -22,6 +28,12 @@ app.get('/', (req, res) => {
 
 // path routers posts
 app.use('/posts', routers);
+
+// error handler
+app.use(errorsHandler);
+
+// not found
+app.use(notFound);
 
 // server active ready for request on a specific port
 app.listen(port, () => {
